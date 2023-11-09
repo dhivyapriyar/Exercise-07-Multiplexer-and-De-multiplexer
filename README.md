@@ -1,13 +1,25 @@
 # Exercise-07-Multiplexer-and-De-multiplexer
-### AIM: To implement 4 X1 multiplexer and 1X4 de multiplexer using verilog and validate its outputs
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
+
+### AIM: 
+
+To implement 4 X1 multiplexer and 1X4 de multiplexer using verilog and validate its outputs
+
+### HARDWARE REQUIRED:  
+
+– PC, Cyclone II , USB flasher
+
+### SOFTWARE REQUIRED:   
+
+Quartus prime
+
 ### THEORY 
 
 ## What are Multiplexer and Demultiplexer?
+
 In-network transmission, both the multiplexer and demultiplexer are combinational circuits. A multiplexer selects an input from several inputs then it is transmitted in the form of a single line. An alternative name of the multiplexer is MUX or data selector. A demultiplexer uses one input signal and generates many. So it is known as Demux or data distributor.
 
 ## What is a Multiplexer?
+
 The multiplexer is a device that has multiple inputs and single line output. The select lines determine which input is connected to the output, and also increase the amount of data that can be sent over a network within a certain time. It is also called a data selector.
 
 The single-pole multi-position switch is a simple example of a non-electronic circuit of the multiplexer, and it is widely used in many electronic circuits. The multiplexer is used to perform high-speed switching and is constructed by electronic components.
@@ -27,6 +39,7 @@ If the control input is changed to 11, then all gates are restricted except the 
 
 
 ## What is Demultiplexer?
+
 De-multiplexer is also a device with one input and multiple output lines. It is used to send a signal to one of the many devices. The main difference between a multiplexer and a de-multiplexer is that a multiplexer takes two or more signals and encodes them on a wire, whereas a de-multiplexer does reverse to what the multiplexer does.
 ![image](https://user-images.githubusercontent.com/36288975/170912606-a30e4b74-1726-4430-b245-2c3c3d9c232d.png)
 Figure 3 De-multiplexer 
@@ -47,38 +60,124 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
 
+1.Start the module using module projname().
+
+2.Declare the inputs and outputs along with the select lines according to the multiplexer and demultiplexer.
+
+3.Use wire to assign intermediate outputs.
+
+4.Use and, or and not gates to get the desired output.
+
+5.End the module.
+
+6.Generate RTL realization and timing diagrams.
 
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+
+Developed by: Dhivyapriya.R
+
+RegisterNumber:  212222230032
+
 */
 
+### MULTIPLEXER
 
+```
 
+module multiplexer(I0,I1,I2,I3,S0,S1,Y);
 
+input I0,I1,I2,I3,S0,S1;
+
+output Y;
+
+wire P,Q,R,S,S0c,S1c;
+
+not(S0c,S0);
+
+nor(S1c,S1);
+
+and(P,S0c,S1c,I0);
+
+and(Q,S0c,S1,I1);
+
+and(R,S0,S1c,I2);
+
+and(S,S0,S1,I3);
+
+or(Y,P,Q,R,S);
+
+endmodule
+
+```
+
+### DEMULTIPLEXER
+
+```
+
+module demux(Y0,Y1,Y2,Y3,S0,S1,I);
+
+input S0,S1,I;
+
+output Y0,Y1,Y2,Y3;
+
+wire S0C,S1C;
+
+nor (S0C,S0);
+
+nor (S1C,S1);
+
+and (Y0,I,S0C,S1C);
+
+and (Y1,I,S0C,S1);
+
+and (Y2,I,S0,S1C);
+
+and (Y3,I,S0,S1);
+
+endmodule
+
+```
 
 
 ### RTL LOGIC  
 
+### MULTIPLEXER:
 
+![de 7 1](https://github.com/dhivyapriyar/Exercise-07-Multiplexer-and-De-multiplexer/assets/119477552/a8ced7dd-d516-488e-8f9f-1128da309370)
 
+### DEMULTIPLEXER:
 
-
-
-
+![de 7 2](https://github.com/dhivyapriyar/Exercise-07-Multiplexer-and-De-multiplexer/assets/119477552/24c888df-b2dd-480f-b435-134b16cdba16)
 
 ### TIMING DIGRAMS  
 
+### MULTIPLEXER :
+
+![de 7 3](https://github.com/dhivyapriyar/Exercise-07-Multiplexer-and-De-multiplexer/assets/119477552/31a132ad-9bea-4424-a7bf-1d054923c695)
+
+### DEMULTIPLEXER:
+
+![de7 4](https://github.com/dhivyapriyar/Exercise-07-Multiplexer-and-De-multiplexer/assets/119477552/eac1d28e-3e21-4207-a8ca-b1ca95cd32c1)
 
 
 
+### TRUTH TABLE:
 
-### TRUTH TABLE 
+### MULTIPLEXER:
+
+![de 7 5](https://github.com/dhivyapriyar/Exercise-07-Multiplexer-and-De-multiplexer/assets/119477552/6a11877e-c0c8-40f9-b19d-3a7dce04b0c8)
+
+### DEMULTIPLEXER:
+
+![de 7 6](https://github.com/dhivyapriyar/Exercise-07-Multiplexer-and-De-multiplexer/assets/119477552/d0a50510-9433-40dc-ad53-909c27ea024d)
+
+### RESULT:
+
+Hence, 4x1 Multiplexer and 1x4 Demultiplexer is been implemented and verified using verilog programming and its output are validated.
 
 
 
