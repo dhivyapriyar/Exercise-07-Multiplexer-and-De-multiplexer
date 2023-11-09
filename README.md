@@ -184,4 +184,4 @@ Hence, 4x1 Multiplexer and 1x4 Demultiplexer is been implemented and verified us
 
 
 
-### RESULTS 
+
